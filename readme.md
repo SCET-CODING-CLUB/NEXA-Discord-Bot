@@ -1,21 +1,17 @@
-🤖 NEXA Discord Bot
-Welcome to the official NEXA Bot for the Nexus Coding Club!
-This bot provides essential information about the club, automates onboarding with welcome messages, and allows members to access updates via intuitive slash commands.
+# 🤖 NEXA Discord Bot
 
-📌 Features
-👋 Welcomes new members to the server
+A custom-built Discord bot for the Nexus Coding Club at SCET, designed to support the community with daily updates, member onboarding, event info, and more!
 
-💬 Slash commands for easy interaction
+---
 
-🎯 Displays the club's mission and goals
+## 🚀 Features
 
-📅 Lists daily club activities
+- 🙌 Welcomes new members with a personalized message
+- 🎯 Displays the purpose of Nexus Coding Club
+- 📅 Shares daily club activities (timings & content)
+- 🎉 Lists past and upcoming events
+- 🧑‍💻 Shows team hierarchy & roles
+- 🤝 Help command with contact info
+- ⚙️ Built using Python, Discord.py, and Slash Commands
 
-🎉 Shares event details
-
-🧑‍💻 Shows team roles and hierarchy
-
-ℹ️ Gives an overview of the Nexus Coding Club
-
-📩 Provides help and contact support
-
+---
