@@ -67,7 +67,7 @@ async def roles(interaction: discord.Interaction):
         "• 💰 Treasurer: Shaik Khasim Vali\n"
         "• 🧑‍🎓 Student Coordinators:\n"
         "   • 👦 Boys: Sohail Pashe\n"
-        "   • 👧 Girls: \n"
+        "   • 👧 Girls: Tabassum \n"
         "• 📢 PR & Social Media Manager: Mohammad Habib Hussain Alkaf"
     )
 
@@ -104,18 +104,18 @@ async def on_member_join(member):
     # DM welcome message
     try:
         await member.send(
-             "👋 **Welcome to the Nexus Coding Club Discord Server!**\n\n"
+             "👋 **Welcome to the NEXUS Coding Club Discord Server!**\n\n"
         "You've just taken your first step into a vibrant community of tech enthusiasts, learners and innovators at SCET.\n\n"
         "**Here's what you can look forward to:**\n"
         "💻 Daily coding sessions at 2:15 PM in the Nexus Office (near MBA IT Lab)\n"
-        "🤝 Peer programming, group problem-solving and project collaboration\n"
+        "🤝 Peer to peer programming, group problem-solving and project collaboration\n"
         "🚀 Real-world app development and skill-building workshops\n"
-        "🎙️ Tech talks, events, competitions and hackathons\n\n"
+        "🎙️ Tech bootcamps, events, competitions and hackathons\n\n"
         "To get started, type `/help` in the server to see all available commands.\n"
         "Want to know what events and workshops we've hosted? Try `/events` in the server to explore more! 🎉\n\n"
         "We're excited to have you on board  let's learn, build and grow together! ✨"
         )
     except discord.Forbidden:
         # print(f"❌ Could not send DM to {member.name}  they may have DMs disabled.") This Will be the meesage will come that they have not opened there dms
-        pass #Does nothing  If dms are disabled
+        pass #Does nothing  If dms are disabled 
 bot.run(TOKEN)
