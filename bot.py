@@ -21,14 +21,14 @@ try:
         config_data = json.load(f)
 except FileNotFoundError:
     
-    print("Server-config.json file not found.\nCreating one...")
+    print("server-config.json file not found.\nCreating one...")
 
     with open("server-config.json", "w") as f:
-        f.write(json.dumps({"test":{"GUILD_ID":0,"WELCOME_CHANNEL_ID":0}}, indent=4))
+        f.write(json.dumps({"test":{"GUILD_ID":0,"WELCOME_CHANNEL_ID":0,"CONTACT_PERSONEL":0}}, indent=4))
 
     print()
-    print("Replace the 0s with actual id(s)")
-    print("Usage:\n\tpython bot.py <config_name>\n\t              default: \"test\"")
+    print("Replace the 0s with actual id(s) in server-conig.json")
+    print("Usage:\n\tpython bot.py <config>\n\t              default: \"test\"")
     print("Add more configs if neccessary")
     raise SystemExit
 
