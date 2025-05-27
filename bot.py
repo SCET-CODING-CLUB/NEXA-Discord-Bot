@@ -3,12 +3,50 @@ from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv
 import os
+from sys import argv
+import json
 
+# check command line argument 
+if len(argv) == 1:
+    _config = "test" 
+elif len(argv) == 2:
+    _config = argv[1]
+else:
+    print(F"Correct usage: python bot.py <config>\n{' '*29}default:\"test\"")
+    raise SystemExit
+
+# check if server-config.json exists
+try:
+    with open("server-config.json", "r") as f:
+        config_data = json.load(f)
+except FileNotFoundError:
+    
+    print("Server-config.json file not found.\nCreating one...")
+
+    with open("server-config.json", "w") as f:
+        f.write(json.dumps({"test":{"GUILD_ID":0,"WELCOME_CHANNEL_ID":0}}, indent=4))
+
+    print()
+    print("Replace the 0s with actual id(s)")
+    print("Usage:\n\tpython bot.py <config_name>\n\t              default: \"test\"")
+    print("Add more configs if neccessary")
+    raise SystemExit
+
+# check type of data
+if not isinstance(config_data, dict):
+    raise TypeError("server-config.json is in wrong format")
+
+# extract config info
+config = config_data.get(_config)
+if config is None:
+    raise LookupError(F"\"{_config}\" not present in server-config.json")
+
+# load env variables
 load_dotenv()
-
 TOKEN = os.getenv("DISCORD_TOKEN")
-GUILD_ID = discord.Object(id=int(os.getenv("GUILD_ID")))  # You must set this in your .env file
-WELCOME_CHANNEL_ID = int(os.getenv("WELCOME_CHANNEL_ID"))  # Add this to your .env too
+
+GUILD_ID = discord.Object(id=config["GUILD_ID"])
+WELCOME_CHANNEL_ID = config["WELCOME_CHANNEL_ID"]
 
 intents = discord.Intents.default()
 intents.members = True  # Required for on_member_join
