@@ -47,6 +47,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 GUILD_ID = discord.Object(id=config["GUILD_ID"])
 WELCOME_CHANNEL_ID = config["WELCOME_CHANNEL_ID"]
+CONTACT_PERSONEL = config["CONTACT_PERSONEL"]
 
 intents = discord.Intents.default()
 intents.members = True  # Required for on_member_join
@@ -119,7 +120,8 @@ async def help_command(interaction: discord.Interaction):
         "/events – Explore Nexus events\n"
         "/roles – See the team structure\n"
         "/about – About the Nexus Coding Club\n\n"
-        "📩 Need help? Contact <@790539589470912513>."
+        F"📩 Need help? Contact <@{CONTACT_PERSONEL}>.",
+        allowed_mentions=discord.AllowedMentions(users=False)
     )
 
 @bot.tree.command(name="about", description="About Nexus Coding Club", guild=GUILD_ID)
