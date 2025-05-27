@@ -48,11 +48,12 @@ async def daily(interaction: discord.Interaction):
 @bot.tree.command(name="events", description="View our recent events", guild=GUILD_ID)
 async def events(interaction: discord.Interaction):
     await interaction.response.send_message(
-        "🎉 Major Events Organized by Nexus:\n"
-        "• SparkQuest 2025\n"
-        "• ExpoGen 1.0\n"
-        "More events coming soon — stay tuned!"
+        "🎉 Major Events Organized by Nexus Coding Club:\n"
+        "• SparkQuest 2025 – 27-28 February 2025\n"
+        "• ExpoGen 1.0 – 6th May 2025\n\n"
+        "More exciting events are coming soon — stay tuned!"
     )
+
 
 @bot.tree.command(name="roles", description="Understand the Nexus team structure", guild=GUILD_ID)
 async def roles(interaction: discord.Interaction):
@@ -61,11 +62,15 @@ async def roles(interaction: discord.Interaction):
         "• 👑 President: Abdul Samad\n"
         "• 🤝 Vice President: Abdul Rafey\n"
         "• 🧠 Technical Lead: Mohiuddin\n"
-        "• 📢 PR & Social Media Manager: Mohammad Habib Hussain Alkaf\n"
-        "• 🎯 Event Coordinators: Ayaan\n"
-        "• 👥 Core Team Members: IDk\n"
-        "• 👨‍🎓 General Members: All participating students"
+        "• 🎯 Event Manager: Ayaan\n"
+        "• 🧩 Project Manager: Ahmed Abdul Malik\n"
+        "• 💰 Treasurer: Shaik Khasim Vali\n"
+        "• 🧑‍🎓 Student Coordinators:\n"
+        "   • 👦 Boys: Sohail Pashe\n"
+        "   • 👧 Girls: \n"
+        "• 📢 PR & Social Media Manager: Mohammad Habib Hussain Alkaf"
     )
+
 
 @bot.tree.command(name="help", description="List of commands and contact", guild=GUILD_ID)
 async def help_command(interaction: discord.Interaction):
@@ -76,23 +81,41 @@ async def help_command(interaction: discord.Interaction):
         "/events – Explore Nexus events\n"
         "/roles – See the team structure\n"
         "/about – About the Nexus Coding Club\n\n"
-        "📩 Need help? Contact <790539589470912513>."
+        "📩 Need help? Contact <@790539589470912513>."
     )
 
 @bot.tree.command(name="about", description="About Nexus Coding Club", guild=GUILD_ID)
 async def about(interaction: discord.Interaction):
     await interaction.response.send_message(
-        "ℹ️ Nexus Coding Club is a student-driven tech community at SCET, focused on building coding skills, launching real-world projects, and collaborating with peers. "
+        "ℹ️ Nexus Coding Club is a student-driven tech community at SCET, focused on building coding skills, launching real-world projects and collaborating with peers. "
         "You can customize this message to fit your club's intro."
     )
 
-# Welcome new members (in a public channel)
+# Welcome new members (in a public channel + send DM)
 @bot.event
 async def on_member_join(member):
+    # Public welcome message
     channel = bot.get_channel(WELCOME_CHANNEL_ID)
     if channel:
         await channel.send(
             f"👋 Welcome to Nexus Coding Club, {member.mention}!\nUse `/help` to get started!"
         )
 
+    # DM welcome message
+    try:
+        await member.send(
+             "👋 **Welcome to the Nexus Coding Club Discord Server!**\n\n"
+        "You've just taken your first step into a vibrant community of tech enthusiasts, learners and innovators at SCET.\n\n"
+        "**Here's what you can look forward to:**\n"
+        "💻 Daily coding sessions at 2:15 PM in the Nexus Office (near MBA IT Lab)\n"
+        "🤝 Peer programming, group problem-solving and project collaboration\n"
+        "🚀 Real-world app development and skill-building workshops\n"
+        "🎙️ Tech talks, events, competitions and hackathons\n\n"
+        "To get started, type `/help` in the server to see all available commands.\n"
+        "Want to know what events and workshops we've hosted? Try `/events` in the server to explore more! 🎉\n\n"
+        "We're excited to have you on board  let's learn, build and grow together! ✨"
+        )
+    except discord.Forbidden:
+        # print(f"❌ Could not send DM to {member.name}  they may have DMs disabled.") This Will be the meesage will come that they have not opened there dms
+        pass #Does nothing  If dms are disabled
 bot.run(TOKEN)
