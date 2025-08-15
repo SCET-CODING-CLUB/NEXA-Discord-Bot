@@ -96,18 +96,11 @@ async def events(interaction: discord.Interaction):
 
 @bot.tree.command(name="roles", description="Understand the Nexus team structure", guild=GUILD_ID)
 async def roles(interaction: discord.Interaction):
+    with open("teamstruct.json", encoding="utf-8") as f:
+        data = json.load(f)
+     
     await interaction.response.send_message(
-        "🧑‍💻 Nexus Coding Club Team Hierarchy:\n"
-        "• 👑 President: Abdul Samad\n"
-        "• 🤝 Vice President: Abdul Rafey\n"
-        "• 🧠 Technical Lead: Mohiuddin\n"
-        "• 🎯 Event Manager: Ayaan\n"
-        "• 🧩 Project Manager: Ahmed Abdul Malik\n"
-        "• 💰 Treasurer: Shaik Khasim Vali\n"
-        "• 🧑‍🎓 Student Coordinators:\n"
-        "   • 👦 Boys: Sohail Pashe\n"
-        "   • 👧 Girls: Tabassum \n"
-        "• 📢 PR & Social Media Manager: Mohammad Habib Hussain Alkaf"
+     "\n".join( data )
     )
 
 
@@ -147,7 +140,7 @@ async def on_member_join(member):
              "👋 **Welcome to the NEXUS Coding Club Discord Server!**\n\n"
         "You've just taken your first step into a vibrant community of tech enthusiasts, learners and innovators at SCET.\n\n"
         "**Here's what you can look forward to:**\n"
-        "💻 Daily coding sessions at 2:15 PM in the Nexus Office (near MBA IT Lab)\n"
+        "💻 Daily coding sessions at 2:15 PM in the Nexus Office (near MBA IT Office)\n"
         "🤝 Peer to peer programming, group problem-solving and project collaboration\n"
         "🚀 Real-world app development and skill-building workshops\n"
         "🎙️ Tech bootcamps, events, competitions and hackathons\n\n"
