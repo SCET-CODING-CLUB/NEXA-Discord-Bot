@@ -121,9 +121,9 @@ async def help_command(interaction: discord.Interaction):
 @bot.tree.command(name="about", description="About Nexus Coding Club", guild=GUILD_ID)
 async def about(interaction: discord.Interaction):
     await interaction.response.send_message(
-        "ℹ️ Nexus Coding Club is a vibrant, student-driven tech community at Shadan College of Engineering & Technology."
-         " We focus on sharpening coding skills, creating impactful real-world projects and fostering collaboration among passionat peers."
-         " From coding challenges to innovative solutions we learn, build and grow together. 🚀 "
+        "ℹ️ Nexus Coding Club is a vibrant, student-driven tech community at Shadan College of Engineering & Technology.\n"
+         " We focus on sharpening coding skills, creating impactful real-world projects and fostering collaboration among passionate peers.\n"
+         " From coding challenges to innovative solutions we learn, build and grow together. 🚀\n "
        
     )
 
