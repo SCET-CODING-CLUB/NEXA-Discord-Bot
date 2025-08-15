@@ -1,1 +1,1 @@
-worker: python bot.py main
+sh -c "$WORKER_CMD"
