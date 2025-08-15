@@ -59,6 +59,7 @@ async def on_ready():
     print(f"✅ Logged in as {bot.user}!")
     try:
         synced = await bot.tree.sync(guild=GUILD_ID)
+        print(F"Server started on guild ID: {GUILD_ID}")
         print(f"🔁 Synced {len(synced)} application commands.")
     except Exception as e:
         print(f"❌ Sync error: {e}")
